@@ -172,8 +172,8 @@ body{
 .hintbox.red{border-left-color:var(--coral);background:rgba(224,107,92,0.08);}
 .hintbox.red .ttl{color:var(--coral);}
 /* ===== 翻卡（词汇） ===== */
-.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
-.fcard{perspective:600px;height:96px;cursor:pointer;}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;}
+.fcard{perspective:600px;height:152px;cursor:pointer;}
 .fcard .inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s;}
 .fcard.flip .inner{transform:rotateY(180deg);}
 .fcard .face{
@@ -184,8 +184,16 @@ body{
 .fcard .front{background:var(--card2);position:relative;padding-top:16px;}
 .fcard .front .en{font-size:14px;font-weight:700;word-break:break-word;}
 .fcard .front .tip{font-size:10px;color:var(--ink2);margin-top:4px;}
-.fcard .back{background:linear-gradient(135deg,rgba(143,211,232,0.20),rgba(232,182,75,0.14));transform:rotateY(180deg);}
-.fcard .back .cn{font-size:12.5px;line-height:1.4;word-break:break-word;}
+.fcard .back{background:linear-gradient(135deg,rgba(143,211,232,0.20),rgba(232,182,75,0.14));transform:rotateY(180deg);padding:9px 10px;justify-content:flex-start;align-items:stretch;text-align:left;overflow:hidden;}
+.fcard .back .cn{font-size:12.5px;line-height:1.35;word-break:break-word;color:var(--ink);font-weight:700;}
+.fcard .back .exbox{margin-top:4px;border-top:1px dashed rgba(232,182,75,0.35);padding-top:4px;}
+.fcard .back .ex-head{display:flex;align-items:center;gap:5px;margin-bottom:2px;}
+.fcard .back .ex-lbl{font-size:9px;letter-spacing:1px;border:1px solid rgba(232,182,75,0.45);color:var(--gold);border-radius:6px;padding:0 5px;line-height:14px;}
+.fcard .back .ex-en{font-size:10.5px;line-height:1.45;word-break:break-word;color:var(--ink);}
+.fcard .back .ex-cn{font-size:10px;line-height:1.4;color:var(--ink2);margin-top:2px;word-break:break-word;}
+.fcard .back .hl{color:var(--gold);font-weight:700;}
+.fcard .back .spk-ex{width:20px;height:20px;min-width:20px;}
+.fcard .back .spk-ex svg{width:11px;height:11px;}
 /* ===== 短语行 ===== */
 .plist{display:flex;flex-direction:column;gap:8px;}
 .prow{
@@ -396,10 +404,15 @@ table.prep .key{color:var(--gold);font-weight:700;font-size:14px;}
 /* ===== 触屏 / 平板放大 ===== */
 body.touch .btn{min-height:58px;font-size:17px;border-radius:16px;}
 body.touch .opt{min-height:56px;font-size:15px;padding:12px 16px;border-radius:14px;}
-body.touch .fcard{height:106px;}
+body.touch .fcard{height:172px;}
 body.touch .fcard .front .en{font-size:16px;}
 body.touch .fcard .front .tip{font-size:11px;}
-body.touch .fcard .back .cn{font-size:14px;}
+body.touch .fcard .back .cn{font-size:14.5px;}
+body.touch .fcard .back .ex-en{font-size:12px;}
+body.touch .fcard .back .ex-cn{font-size:11px;}
+body.touch .fcard .back .ex-lbl{font-size:10px;line-height:16px;}
+body.touch .fcard .back .spk-ex{width:26px;height:26px;min-width:26px;}
+body.touch .fcard .back .spk-ex svg{width:14px;height:14px;}
 body.touch .prow{padding:13px 14px;}
 body.touch .prow .en{font-size:14.5px;}
 body.touch .prow .cn{font-size:13.5px;}
@@ -429,6 +442,18 @@ body.touch .hero p{font-size:13.5px;}
 body.touch .card p{font-size:13.5px;}
 body.touch .hintbox{font-size:13.5px;}
 body.touch .station-head .st h2{font-size:21px;}
+/* ===== 巩固训练 · 记忆曲线 ===== */
+.review-track{display:flex;align-items:center;flex-wrap:wrap;gap:4px;margin-top:12px;padding:10px;background:rgba(255,255,255,0.04);border:1px solid var(--line);border-radius:12px;}
+.review-track .rstep{font-size:11px;font-weight:700;color:var(--ink2);background:rgba(255,255,255,0.06);border:1px solid var(--line);border-radius:8px;padding:4px 7px;}
+.review-track .rstep.start{color:var(--gold);border-color:rgba(232,182,75,0.4);}
+.review-track .rarrow{font-size:13px;color:var(--ink2);opacity:.55;font-style:normal;}
+.rlist{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.ritem{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1px solid var(--line);border-radius:10px;padding:8px 10px;}
+.ritem .rcat{flex-shrink:0;font-size:10px;font-weight:700;letter-spacing:.5px;}
+.ritem .rname{flex:1 1 auto;min-width:0;font-size:12.5px;line-height:1.45;}
+.ritem .rstate{flex-shrink:0;font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,0.06);color:var(--ink2);}
+.ritem .rstate.bad{color:var(--bad);background:rgba(255,138,128,0.12);border:1px solid rgba(255,138,128,0.3);}
+.ritem .rstate.due{color:var(--gold);background:rgba(232,182,75,0.12);border:1px solid rgba(232,182,75,0.3);}
 </style>
 </head>
 <body>
@@ -554,30 +579,30 @@ if(isTouch && document.body){ document.body.classList.add('touch'); }
 /* ================= 数据 ================= */
 
 var VOCAB = [
-  {en:'festival', cn:'节日', group:'节日与活动'},
-  {en:'celebrate', cn:'庆祝', group:'节日与活动'},
-  {en:'ceremony', cn:'典礼，仪式', group:'节日与活动'},
-  {en:'parade', cn:'游行', group:'节日与活动'},
-  {en:'fireworks', cn:'烟花', group:'节日与活动'},
-  {en:'midnight', cn:'午夜', group:'节日与活动'},
-  {en:'decorate', cn:'装饰', group:'节日与活动'},
-  {en:'competition', cn:'比赛', group:'节日与活动'},
-  {en:'traditional', cn:'传统的', group:'形容词'},
-  {en:'lucky', cn:'幸运的', group:'形容词'},
-  {en:'amazing', cn:'令人惊叹的', group:'形容词'},
-  {en:'brilliant', cn:'灿烂的', group:'形容词'},
-  {en:'fantastic', cn:'极好的，梦幻般的', group:'形容词'},
-  {en:'frozen', cn:'冰冻的', group:'形容词'},
-  {en:'pure', cn:'纯净的', group:'形容词'},
-  {en:'annual', cn:'一年一度的', group:'形容词'},
-  {en:'culture', cn:'文化', group:'名词与文化'},
-  {en:'gift', cn:'礼物', group:'名词与文化'},
-  {en:'costume', cn:'服装，盛装', group:'名词与文化'},
-  {en:'population', cn:'人口', group:'名词与文化'},
-  {en:'sculpture', cn:'雕塑', group:'名词与文化'},
-  {en:'skyscraper', cn:'摩天大楼', group:'名词与文化'},
-  {en:'brick', cn:'砖', group:'名词与文化'},
-  {en:'adult', cn:'成年人', group:'名词与文化'}
+{en:'festival', cn:'节日', group:'节日与活动', ex:'Every winter, for over 30 years, Harbin has held an ice festival.', exCn:'每年冬天，30 多年来，哈尔滨都会举办冰雪节。'},
+{en:'celebrate', cn:'庆祝', group:'节日与活动', ex:'Last year, I celebrated the New Year three times.', exCn:'去年，我庆祝了三次新年。'},
+{en:'ceremony', cn:'典礼，仪式', group:'节日与活动', ex:'They attend a ceremony in their area.', exCn:'他们在当地参加典礼。'},
+{en:'parade', cn:'游行', group:'节日与活动', ex:'On New Year\'s Day, we watched a fantastic parade.', exCn:'元旦那天，我们看了一场精彩的游行。'},
+{en:'fireworks', cn:'烟花', group:'节日与活动', ex:'at midnight they had amazing fireworks.', exCn:'午夜时分，他们放了令人惊叹的烟花。'},
+{en:'midnight', cn:'午夜', group:'节日与活动', ex:'at midnight they had amazing fireworks.', exCn:'午夜时分，他们放了令人惊叹的烟花。'},
+{en:'decorate', cn:'装饰', group:'节日与活动', ex:'Lee\'s parents decorated their house and painted their doors red.', exCn:'Lee 的父母装饰房子，把门漆成了红色。'},
+{en:'competition', cn:'比赛', group:'节日与活动', ex:'I went there last year for the annual egg-cooking competition on 4 July.', exCn:'去年 7 月 4 日，我去那儿参加一年一度的煮蛋比赛。'},
+{en:'traditional', cn:'传统的', group:'形容词', ex:'Later, we watched brilliant fireworks and traditional Indian dancing.', exCn:'后来，我们看了绚烂的烟花和传统印度舞。'},
+{en:'lucky', cn:'幸运的', group:'形容词', ex:'Red is a lucky colour for Chinese people!', exCn:'红色对中国人来说是幸运的颜色！'},
+{en:'amazing', cn:'令人惊叹的', group:'形容词', ex:'at midnight they had amazing fireworks.', exCn:'午夜时分，他们放了令人惊叹的烟花。'},
+{en:'brilliant', cn:'灿烂的', group:'形容词', ex:'we watched brilliant fireworks and traditional Indian dancing.', exCn:'我们看了灿烂的烟花和传统印度舞。'},
+{en:'fantastic', cn:'极好的，梦幻般的', group:'形容词', ex:'On New Year\'s Day, we watched a fantastic parade.', exCn:'元旦那天，我们看了一场梦幻般的游行。'},
+{en:'frozen', cn:'冰冻的', group:'形容词', ex:'They cut ice bricks from the frozen Songhua River.', exCn:'他们从结冰的松花江切出冰砖。'},
+{en:'pure', cn:'纯净的', group:'形容词', ex:'The clear bricks are made for the festival using very pure water.', exCn:'透明冰块是用非常纯净的水制作的。'},
+{en:'annual', cn:'一年一度的', group:'形容词', ex:'I went there last year for the annual egg-cooking competition on 4 July.', exCn:'去年 7 月 4 日，我去参加一年一度的煮蛋比赛。'},
+{en:'culture', cn:'文化', group:'名词与文化', ex:'In Chinese culture, long noodles are lucky.', exCn:'在中国文化里，长面条是吉利的。'},
+{en:'gift', cn:'礼物', group:'名词与文化', ex:'They also give her gifts such as flowers or jewellery.', exCn:'她们还会送花或珠宝之类的礼物。'},
+{en:'costume', cn:'服装，盛装', group:'名词与文化', ex:'They weren\'t really \"Cowboys and Indians\" of course - they were in costume.', exCn:'当然他们并不是真的\"牛仔和印第安人\"——他们只是穿了盛装。'},
+{en:'population', cn:'人口', group:'名词与文化', ex:'Oatman in Arizona has a population of around 200!', exCn:'亚利桑那州的 Oatman 只有大约 200 人口！'},
+{en:'sculpture', cn:'雕塑', group:'名词与文化', ex:'There are large snow sculptures and full-size buildings.', exCn:'那里有大型雪雕和真人大小的建筑。'},
+{en:'skyscraper', cn:'摩天大楼', group:'名词与文化', ex:'There are ice castles, ice skyscrapers and ice slides, which are very popular with children.', exCn:'那里有冰城堡、冰摩天大楼和冰滑梯，很受孩子们欢迎。'},
+{en:'brick', cn:'砖', group:'名词与文化', ex:'They cut ice bricks from the frozen Songhua River.', exCn:'他们从结冰的松花江切出冰砖。'},
+{en:'adult', cn:'成年人', group:'名词与文化', ex:'this is the age when teenagers become adults and take on the responsibilities of being an adult.', exCn:'这是青少年长大成人、承担成年人责任的年龄。'},
 ];
 
 var PHRASES = [
@@ -657,33 +682,6 @@ var ADJ_POOL = [
   {q:'brilliant ___　灿烂的烟花', options:['fireworks','costume','culture','gift'], a:0}
 ];
 
-var READINGS = [
-  {
-    title:'节日里的故事',
-    country:'全球',
-    text:'墨西哥孩子用棍子敲开<b>皮纳塔</b>（pinata），糖果掉出来大家抢着捡。中国婚礼最后一道菜一定是<b>长面条</b>，必须整根吃——面条越长，寓意<b>长寿</b>。英国<b>母亲节</b>在3月或4月，孩子们为妈妈打扫房间、做饭，送花和珠宝。伦敦<b>新年夜</b>，成千上万的人到泰晤士河边，午夜看<b>烟花</b>点亮天空、听<b>大本钟</b>敲响。日本<b>成人节</b>在1月第二个星期一，20岁的年轻人穿传统服装参加典礼。',
-    question:'想一想：每个国家庆祝的方式有什么不同？你能找出 5 个"一般过去时"动词吗？'
-  },
-  {
-    title:'我的三次新年（Becky Wells）',
-    country:'英国·中国·印度',
-    text:'Becky 去年<b>庆祝了三次新年</b>：12月31日在布莱顿开新年派对。2月在伦敦过<b>中国年</b>——朋友家装饰了房子、把门漆成红色，除夕夜做特别的食物，午夜放<b>灿烂烟花</b>，新年第一天看了<b>梦幻游行</b>。11月在伯明翰过<b>排灯节（Diwali）</b>——Anisha 一家打扫房子、送糖果和礼物，发贺卡短信，点上灯和蜡烛，还有<b>传统印度舞蹈</b>。',
-    question:'想一想：三次新年分别在几月？中国年和排灯节的庆祝方式哪里不一样？'
-  },
-  {
-    title:'奇特节日（三位同学的见闻）',
-    country:'美国·阿拉斯加',
-    text:'怀俄明州<b>"绿河聚会"</b>：人们穿上牛仔和原住民服装，像回到<b>19世纪30年代</b>的集市。亚利桑那州 Oatman 镇只有<b>约200人口</b>，每年7月4日办<b>煮蛋比赛</b>——20名选手<b>不用煤气和电</b>，只用太阳的热量、镜子和<b>放大镜</b>，15分钟内煮熟鸡蛋！阿拉斯加 Nome 每年9月办<b>浴缸赛</b>：Ricky 坐在带轮子的浴缸里，4个朋友推着跑约100米——他们没赢，但特别好玩。',
-    question:'想一想：三个节日各"奇特"在哪里？如果让你选一个参加，你想去哪个？为什么？'
-  }
-];
-
-var READINGS_EN = [
-  'People in Mexico have pinatas at their parties. Children hit the pinata with a stick, and the sweets fall out onto the ground. In China, people eat long noodles at weddings. You have to eat them in one piece, because long noodles mean a long life. In the UK, Mother\'s Day is in March or April. Sons and daughters clean the house or cook a nice meal for their mothers. In London, on New Year\'s Eve, fireworks light up the sky and Big Ben chimes at midnight. In Japan, on Coming of Age Day, young people wear traditional clothes and attend a ceremony.',
-  'Last year, Becky celebrated the New Year three times. On 31 December, she had a big New Year\'s Eve party in Brighton. In February, she stayed with her mate Lee in London. Lee\'s parents decorated their house and painted their doors red. On New Year\'s Eve, they cooked special food, and at midnight they had amazing fireworks. On New Year\'s Day, they watched a fantastic parade. In November, Becky went to Birmingham. Her friend Anisha is a Hindu, and her family celebrates Diwali. They cleaned the house, gave sweets and presents, and put lights and candles in the house and garden. Later, they watched brilliant fireworks and traditional Indian dancing.',
-  'In the town of Pinedale, Wyoming, people dress in costume for the Great Green River Rendezvous festival. It is just like in the 1830s, when people met to buy and sell things. In Oatman, Arizona, there is an annual egg-cooking competition on 4 July. Competitors cook eggs without gas or electricity. They only use the heat of the sun, with mirrors and magnifying glasses. In Nome, Alaska, people have the Great Nome Bathtub Race every September. Ricky entered the competition with his friends. Four friends pushed the bathtub, and Ricky sat inside. They were not the winners, but it was great fun!'
-];
-
 /* 背诵文章（逐句） */
 var ARTICLES = [
   {
@@ -736,19 +734,6 @@ var ARTICLES = [
   }
 ];
 
-var TF_READ = [
-  {q:'皮纳塔里面装着花。', a:false},
-  {q:'中国文化里，长面条是不吉利的。', a:false},
-  {q:'英国的母亲节在6月或7月。', a:false},
-  {q:'新年那天，有人和家人朋友一起吃大餐。', a:true},
-  {q:'日本成人节当天，人们穿特别服装。', a:true},
-  {q:'Nathan 去年7月在美国度假。', a:true},
-  {q:'煮蛋比赛的选手用煤气和电煮鸡蛋。', a:false},
-  {q:'选手们只有15分钟来煮鸡蛋。', a:true},
-  {q:'阿拉斯加浴缸赛每年9月举行。', a:true},
-  {q:'Ricky 的队伍一共有6个人。', a:false}
-];
-
 var TF_FINAL = [
   {q:'皮纳塔里面装着糖果。', a:true},
   {q:'英国的母亲节在6月或7月。', a:false},
@@ -771,10 +756,15 @@ var STATIONS = [
   {id:1, name:'词汇侦察', code:'M-01', desc:'核心词 3 组 · 必背 20+', color:'#8FD3E8', pass:4, count:5, xpNote:'每题+10 · 通关+30'},
   {id:2, name:'短语突击', code:'M-02', desc:'课本 20 条必背短语', color:'#E8B64B', pass:4, count:5, xpNote:'每题+10 · 通关+30'},
   {id:3, name:'语法战术', code:'M-03', desc:'过去式 · on/at/in · 形容词搭档', color:'#7FB069', pass:5, count:6, xpNote:'每题+10 · 通关+30'},
-  {id:4, name:'阅读理解', code:'M-04', desc:'3 篇课文 · 真实句子检验', color:'#C9A7E8', pass:4, count:5, xpNote:'每题+10 · 通关+30'},
   {id:5, name:'背诵特训', code:'M-05', desc:'两篇文章 · 语音判正误', color:'#E06B5C', pass:0, count:0, xpNote:'每句+10 · 全篇+60'},
-  {id:6, name:'综合考核', code:'M-06', desc:'10 题综合检测 · 冲击证书', color:'#FF8A80', pass:8, count:10, xpNote:'每题+10 · 通关+50'}
+  {id:6, name:'综合考核', code:'M-06', desc:'10 题综合检测 · 冲击证书', color:'#FF8A80', pass:8, count:10, xpNote:'每题+10 · 通关+50'},
+  {id:7, name:'巩固训练', code:'M-07', desc:'错题回测 · 记忆曲线复习', color:'#FFB86B', pass:0, count:0, xpNote:'答对+5 · 清空+30'}
 ];
+
+function stById(n){
+  for(var i=0;i<STATIONS.length;i++){ if(STATIONS[i].id === n){ return STATIONS[i]; } }
+  return STATIONS[0];
+}
 
 var RANK_XP = [0,150,350,650,1000,1500,2200];
 var RANK_NAMES = ['青铜','白银','黄金','铂金','钻石','黑鹰','三角洲巅峰'];
@@ -792,6 +782,7 @@ function loadProgress(){
       var p = JSON.parse(raw);
       if(p && p.v === 2){
         if(!p.recMode){ p.recMode = 'manual'; }
+        if(!p.m){ p.m = {}; }
         return p;
       }
     }
@@ -800,7 +791,8 @@ function loadProgress(){
     v:2, xp:0, recMode:'manual',
     s1:{done:false,best:0}, s2:{done:false,best:0}, s3:{done:false,best:0},
     s4:{done:false,best:0}, s6:{done:false,best:0},
-    rec:{a:{done:[],fullDone:false,fullBonus:false}, b:{done:[],fullDone:false,fullBonus:false}}
+    rec:{a:{done:[],fullDone:false,fullBonus:false}, b:{done:[],fullDone:false,fullBonus:false}},
+    m:{}
   };
 }
 function saveProgress(){
@@ -918,6 +910,11 @@ function shuffle(arr){
 }
 function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function hlEx(sentence, word){
+  var w = String(word).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var re = new RegExp('(' + w + '(?:s|es|d|ed|ing)?)', 'gi');
+  return String(sentence).replace(re, '<b class="hl">$1</b>');
 }
 function qs(sel){ return document.querySelector(sel); }
 function setHTML(id, html){ var el = document.getElementById(id); if(el){ el.innerHTML = html; } }
@@ -1068,7 +1065,7 @@ function buildVocabQ(n){
   return words.map(function(w){
     var wrong = shuffle(VOCAB.filter(function(x){ return x.en !== w.en; })).slice(0,3).map(function(x){ return x.cn; });
     var options = shuffle(wrong.concat([w.cn]));
-    return {type:'mc', q:w.en, options:options, a:options.indexOf(w.cn), note:'词汇站 · ' + w.group, qSay:w.en};
+    return {type:'mc', q:w.en, options:options, a:options.indexOf(w.cn), note:'词汇站 · ' + w.group, qSay:w.en, k:'v:' + w.en};
   });
 }
 function buildPhraseQ(n){
@@ -1076,26 +1073,134 @@ function buildPhraseQ(n){
   return ph.map(function(p){
     var wrong = shuffle(PHRASES.filter(function(x){ return x.en !== p.en; })).slice(0,3).map(function(x){ return x.en; });
     var options = shuffle(wrong.concat([p.en]));
-    return {type:'mc', q:p.cn, options:options, a:options.indexOf(p.en), note:'短语站'};
+    return {type:'mc', q:p.cn, options:options, a:options.indexOf(p.en), note:'短语站', qSay:p.en, k:'p:' + p.en};
   });
 }
 function buildGrammarQ(){
   var past = shuffle(PAST_POOL).slice(0,2);
   var prep = shuffle(PREP_POOL).slice(0,2);
   var adj = shuffle(ADJ_POOL).slice(0,2);
-  return shuffle(past.concat(prep).concat(adj));
+  return shuffle(past.map(function(t, i){ return {type:'mc', q:t.q, options:t.options, a:t.a, note:'语法 · 过去式', k:'g:past:' + t.q}; })
+    .concat(prep.map(function(t, i){ return {type:'mc', q:t.q, options:t.options, a:t.a, note:'语法 · 介词', k:'g:prep:' + t.q}; }))
+    .concat(adj.map(function(t, i){ return {type:'mc', q:t.q, options:t.options, a:t.a, note:'语法 · 搭配', k:'g:adj:' + t.q}; })));
 }
-function tfPool(pool, n){
+function tfPool(pool, n, key){
   return shuffle(pool).slice(0, n).map(function(x){
-    return {type:'tf', q:x.q, a:x.a, note:'判断题'};
+    return {type:'tf', q:x.q, a:x.a, note:'判断题', k:key + ':' + x.q};
   });
 }
 function buildFinalQ(){
-  var tf = tfPool(TF_FINAL, 5);
+  var tf = tfPool(TF_FINAL, 5, 'r:tf2');
   var mc = shuffle(MC_FINAL).slice(0,5).map(function(x){
-    return {type:'mc', q:x.q, options:x.options, a:x.a, note:'综合题'};
+    return {type:'mc', q:x.q, options:x.options, a:x.a, note:'综合题', k:'r:mc:' + x.q};
   });
   return shuffle(tf.concat(mc));
+}
+
+/* ================= 记忆巩固 · 间隔重复引擎 ================= */
+
+var BOX_INT = [0, 1, 3, 7, 15, 30];            /* 档位间隔（天）：记住→1天→3天→7天→15天→30天长期 */
+var BOX_LABEL = ['待回测', '复习中', '复习中', '巩固中', '巩固中', '已掌握'];
+
+function allKN(){
+  var arr = [];
+  VOCAB.forEach(function(w){ arr.push({k:'v:'+w.en, name:w.en + ' · ' + w.cn, type:'mc', say:w.en, cat:'单词'}); });
+  PHRASES.forEach(function(p){ arr.push({k:'p:'+p.en, name:p.cn, type:'mc', say:p.en, cat:'短语'}); });
+  PAST_POOL.forEach(function(t){ arr.push({k:'g:past:'+t.q, name:t.q, type:'mc', cat:'语法'}); });
+  PREP_POOL.forEach(function(t){ arr.push({k:'g:prep:'+t.q, name:t.q, type:'mc', cat:'语法'}); });
+  ADJ_POOL.forEach(function(t){ arr.push({k:'g:adj:'+t.q, name:t.q, type:'mc', cat:'语法'}); });
+  MC_FINAL.forEach(function(t){ arr.push({k:'r:mc:'+t.q, name:'选择：'+t.q, type:'mc', cat:'阅读'}); });
+  TF_FINAL.forEach(function(t){ arr.push({k:'r:tf2:'+t.q, name:'判断：'+t.q, type:'tf', cat:'阅读'}); });
+  return arr;
+}
+function masteryGet(k){
+  var m = progress.m[k];
+  if(!m){ m = progress.m[k] = {box:0, due:0, ok:0, miss:0, firstOk:0}; }
+  return m;
+}
+function masteryHit(k){
+  var m = masteryGet(k);
+  m.ok++;
+  if(!m.firstOk){ m.firstOk = Date.now(); }
+  m.box = Math.min(5, m.box + 1);
+  m.due = Date.now() + BOX_INT[m.box] * 86400000;
+  saveProgress();
+}
+function masteryMiss(k){
+  var m = masteryGet(k);
+  m.miss++;
+  m.box = 0;
+  m.due = Date.now();
+  saveProgress();
+}
+function masteryLabel(box){ return BOX_LABEL[box] || '待回测'; }
+function fmtDue(ts){
+  if(!ts){ return '—'; }
+  var diff = ts - Date.now();
+  if(diff <= 0){ return '已到期'; }
+  var d = Math.round(diff / 86400000);
+  return d <= 0 ? '今天' : (d + ' 天后');
+}
+function reviewQueue(){
+  var now = Date.now();
+  var out = [];
+  allKN().forEach(function(kn){
+    var m = progress.m[kn.k];
+    if(!m){ return; }                       /* 从没测过的知识点，不提前召回 */
+    if(m.box === 0 || m.due <= now){ out.push(kn); }
+  });
+  return out;
+}
+function reviewStats(){
+  var due = 0, learning = 0, mastered = 0, total = 0;
+  var now = Date.now();
+  allKN().forEach(function(kn){
+    var m = progress.m[kn.k];
+    if(!m){ return; }
+    total++;
+    if(m.box === 0 || m.due <= now){ due++; }
+    else if(m.box >= 5){ mastered++; }
+    else { learning++; }
+  });
+  return {due:due, learning:learning, mastered:mastered, total:total};
+}
+function buildReviewQ(){
+  var qs = shuffle(reviewQueue()).slice(0, 15);
+  return qs.map(kItem).filter(function(x){ return x; });
+}
+function pickPoolQ(pool, k, pre, note){
+  var x = pool.filter(function(o){ return o.q === k.slice(pre.length); })[0];
+  if(!x){ return null; }
+  return {type:'mc', q:x.q, options:x.options, a:x.a, note:'回测 · ' + note, k:k};
+}
+function pickTFQ(pool, k, pre){
+  var x = pool.filter(function(o){ return o.q === k.slice(pre.length); })[0];
+  if(!x){ return null; }
+  return {type:'tf', q:x.q, a:x.a, note:'回测 · 阅读', k:k};
+}
+function kItem(kn){
+  var k = kn.k;
+  if(k.indexOf('v:') === 0){
+    var w = VOCAB.filter(function(x){ return x.en === k.slice(2); })[0];
+    if(!w){ return null; }
+    var wrong = shuffle(VOCAB.filter(function(x){ return x.en !== w.en; })).slice(0,3).map(function(x){ return x.cn; });
+    var options = shuffle(wrong.concat([w.cn]));
+    return {type:'mc', q:w.en, options:options, a:options.indexOf(w.cn), note:'回测 · 单词', qSay:w.en, k:k};
+  }
+  if(k.indexOf('p:') === 0){
+    var p = PHRASES.filter(function(x){ return x.en === k.slice(2); })[0];
+    if(!p){ return null; }
+    var pw = shuffle(PHRASES.filter(function(x){ return x.en !== p.en; })).slice(0,3).map(function(x){ return x.en; });
+    var popts = shuffle(pw.concat([p.en]));
+    return {type:'mc', q:p.cn, options:popts, a:popts.indexOf(p.en), note:'回测 · 短语', qSay:p.en, k:k};
+  }
+  var r;
+  if(k.indexOf('g:past:') === 0){ r = pickPoolQ(PAST_POOL, k, 'g:past:', '过去式'); if(r){ return r; } }
+  if(k.indexOf('g:prep:') === 0){ r = pickPoolQ(PREP_POOL, k, 'g:prep:', '介词'); if(r){ return r; } }
+  if(k.indexOf('g:adj:') === 0){ r = pickPoolQ(ADJ_POOL, k, 'g:adj:', '搭配'); if(r){ return r; } }
+  if(k.indexOf('r:tf2:') === 0){ r = pickTFQ(TF_FINAL, k, 'r:tf2:'); if(r){ return r; } }
+  if(k.indexOf('r:mc:') === 0){ r = pickPoolQ(MC_FINAL, k, 'r:mc:', '阅读'); if(r){ return r; } }
+  return null;
 }
 
 /* ================= 测验引擎 ================= */
@@ -1107,14 +1212,19 @@ function startQuiz(n){
   if(n === 1){ qs = buildVocabQ(5); }
   else if(n === 2){ qs = buildPhraseQ(5); }
   else if(n === 3){ qs = buildGrammarQ(); }
-  else if(n === 4){ qs = tfPool(TF_READ, 5); }
+  else if(n === 7){ qs = buildReviewQ(); }
   else { qs = buildFinalQ(); }
+  if(!qs || qs.length === 0){
+    var fb = document.getElementById('station-body');
+    if(fb){ fb.innerHTML = '<div class="card"><h3>当前没有待回测的知识点</h3><p style="color:var(--ink2);">所有测过的知识点都已掌握或还没到复习时间。先去做几轮任务，把不熟的题留下来，它们会自动出现在这里。</p><div class="btnrow"><button class="btn" onclick="App.goHome()">回基地</button></div></div>'; }
+    return;
+  }
   quiz.items = qs; quiz.idx = 0; quiz.correct = 0; quiz.answered = false; quiz.station = n;
   renderQuiz();
 }
 
 function renderQuiz(){
-  var st = STATIONS[quiz.station - 1];
+  var st = stById(quiz.station);
   var it = quiz.items[quiz.idx];
   var total = quiz.items.length;
   var html = '';
@@ -1151,7 +1261,13 @@ function renderQuiz(){
         quiz.answered = true;
         var picked = parseInt(btn.getAttribute('data-i'), 10);
         var correct = quiz.items[quiz.idx].a;
-        if(picked === correct){ quiz.correct++; }
+        var qk = quiz.items[quiz.idx].k;
+        if(picked === correct){
+          quiz.correct++;
+          if(qk){ masteryHit(qk); }
+        } else {
+          if(qk){ masteryMiss(qk); }
+        }
         var all = document.querySelectorAll('#quiz-opts .opt');
         for(var k = 0; k < all.length; k++){
           all[k].disabled = true;
@@ -1178,11 +1294,12 @@ function nextQuiz(){
     finishQuiz();
   }
 }
-function quitQuiz(){ App.renderStation(quiz.station); }
+function quitQuiz(){ SR.stop(); renderStation(quiz.station); }
 
 function finishQuiz(){
   var n = quiz.station;
-  var st = STATIONS[n-1];
+  if(n === 7){ finishReview(); return; }
+  var st = stById(n);
   var total = quiz.items.length;
   var correct = quiz.correct;
   var passed = correct >= st.pass;
@@ -1196,12 +1313,25 @@ function finishQuiz(){
   saveProgress();
   addXP(xp);
   renderResult(n, correct, total, passed, st.pass, xp);
+  location.hash = '/result';
+}
+
+function finishReview(){
+  var total = quiz.items.length;
+  var correct = quiz.correct;
+  var passMark = total > 0 ? Math.ceil(total * 0.8) : 1;
+  var passed = correct >= passMark;
+  var xp = correct * 5 + (passed ? 30 : 0);
+  saveProgress();
+  addXP(xp);
+  renderResult(7, correct, total, passed, passMark, xp);
+  location.hash = '/result';
 }
 
 /* ================= 结果渲染 ================= */
 
 function renderResult(n, correct, total, passed, passMark, xp){
-  var st = STATIONS[n-1];
+  var st = stById(n);
   var pct = Math.round(correct / total * 100);
   var html = '';
   if(n === 6 && passed){
@@ -1240,34 +1370,31 @@ function renderResult(n, correct, total, passed, passMark, xp){
 /* ================= 图标 ================= */
 
 function missionIcon(n){
+  var c = stById(n).color;
   if(n === 1){
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="' + STATIONS[0].color + '" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/></svg>';
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/></svg>';
   }
   if(n === 2){
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="' + STATIONS[1].color + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4l11-1v13l-11 1"/><path d="M16 16.5V9.5l4-.5v7"/></svg>';
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4l11-1v13l-11 1"/><path d="M16 16.5V9.5l4-.5v7"/></svg>';
   }
   if(n === 3){
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="' + STATIONS[2].color + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>';
-  }
-  if(n === 4){
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="' + STATIONS[3].color + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a2 2 0 012-2h12a2 2 0 012 2v13l-3-2-3 2-3-2-3 2z"/></svg>';
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.5 2"/></svg>';
   }
   if(n === 5){
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="' + STATIONS[4].color + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 013 3v6a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10a7 7 0 01-14 0"/><path d="M12 17v4"/></svg>';
+    return '<svg viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 013 3v6a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10a7 7 0 01-14 0"/><path d="M12 17v4"/></svg>';
   }
-  return '<svg viewBox="0 0 24 24" fill="none" stroke="' + STATIONS[5].color + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 16.4 6.4 19.2l1.1-6.2L3 8.6l6.2-.9z"/></svg>';
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="' + c + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 16.4 6.4 19.2l1.1-6.2L3 8.6l6.2-.9z"/></svg>';
 }
 
 /* ================= 勋章 ================= */
 
 function medalsEarned(){
   var m = [];
-  var any = STATIONS.some(function(st){ return st.id !== 5 && progress[progKey(st.id)].done; });
+  var any = STATIONS.some(function(st){ return st.id !== 5 && st.id !== 7 && progress[progKey(st.id)].done; });
   if(any){ m.push('m1'); }
   if(progress.s1.done){ m.push('m2'); }
   if(progress.s2.done){ m.push('m3'); }
   if(progress.s3.done){ m.push('m4'); }
-  if(progress.s4.done){ m.push('m5'); }
   if(progress.rec.a.done.length >= ARTICLES[0].sentences.length && progress.rec.b.done.length >= ARTICLES[1].sentences.length){ m.push('m6'); }
   if(progress.s6.done){ m.push('m7'); }
   return m;
@@ -1303,20 +1430,28 @@ function renderHome(){
   var t = '';
   STATIONS.forEach(function(st){
     var done;
+    var stateHtml;
     if(st.id === 5){
       done = progress.rec.a.done.length >= ARTICLES[0].sentences.length && progress.rec.b.done.length >= ARTICLES[1].sentences.length;
+    } else if(st.id === 7){
+      var rs = reviewStats();
+      done = rs.total > 0 && rs.due === 0;
+      stateHtml = rs.due > 0
+        ? '<div class="tag">待回测</div><div class="best">' + rs.due + ' 个知识点</div>'
+        : (rs.total === 0
+          ? '<div class="tag">待命</div><div class="best">任务中的错题自动收编</div>'
+          : '<div class="tag">已清空</div><div class="best">掌握 ' + rs.mastered + ' · 复习中 ' + rs.learning + '</div>');
     } else {
       done = progress[progKey(st.id)].done;
     }
     var pr = progress[progKey(st.id)];
     var cls = done ? 'ticket passed' : 'ticket';
-    var stateHtml;
     if(st.id === 5){
       var aN = progress.rec.a.done.length, bN = progress.rec.b.done.length;
       stateHtml = done
         ? '<div class="tag">已点亮</div><div class="best">两篇全背 · ' + (aN + bN) + ' 句</div>'
         : '<div class="tag">' + ((aN + bN) > 0 ? '特训中' : '待命') + '</div>' + ((aN + bN) > 0 ? '<div class="best">已背 ' + (aN + bN) + ' 句</div>' : '');
-    } else {
+    } else if(st.id !== 7){
       stateHtml = done
         ? '<div class="tag">已点亮</div><div class="best">最佳 ' + pr.best + '/' + st.count + ' 题</div>'
         : '<div class="tag">' + (pr.best > 0 ? '进行中' : '待命') + '</div>' + (pr.best > 0 ? '<div class="best">已答对 ' + pr.best + ' 题</div>' : '');
@@ -1337,7 +1472,6 @@ function renderHome(){
     {id:'m2', n:'词汇尖兵', d:'词汇侦察通关'},
     {id:'m3', n:'短语突击手', d:'短语突击通关'},
     {id:'m4', n:'语法军师', d:'语法战术通关'},
-    {id:'m5', n:'阅读侦察兵', d:'阅读理解通关'},
     {id:'m6', n:'背诵王牌', d:'两篇文章全背完'},
     {id:'m7', n:'三角洲巅峰', d:'综合考核通关'}
   ];
@@ -1357,7 +1491,7 @@ function renderHome(){
 /* ================= 站点渲染 ================= */
 
 function renderStation(n){
-  var st = STATIONS[n-1];
+  var st = stById(n);
   setHTML('station-kicker', st.code + ' · 作战任务');
   setHTML('station-title', st.name);
   renderPassport();
@@ -1368,13 +1502,18 @@ function renderStation(n){
   if(n === 1){ html += vocabLearnHTML(); }
   else if(n === 2){ html += phraseLearnHTML(); }
   else if(n === 3){ html += grammarLearnHTML(); }
-  else if(n === 4){ html += readingLearnHTML(); }
-  else { html += finalLearnHTML(); }
+  else if(n === 6){ html += finalLearnHTML(); }
+  else if(n === 7){ html += reviewLearnHTML(); }
 
   html += '<div style="margin-top:6px;">';
-  html += '<button class="btn" onclick="App.startQuiz(' + n + ')">' + (pr.done ? '再测一次（最佳 ' + pr.best + '/' + st.count + '）' : '开始小测') + '</button>';
-  if(pr.done){
-    html += '<div style="text-align:center;font-size:11.5px;color:var(--gold);margin-top:8px;">本站已点亮 · 印章已盖</div>';
+  if(n === 7){
+    var dueN = reviewQueue().length;
+    html += '<button class="btn" onclick="App.startQuiz(7)">' + (dueN > 0 ? '开始回测（' + dueN + ' 个知识点）' : '开始回测') + '</button>';
+  } else {
+    html += '<button class="btn" onclick="App.startQuiz(' + n + ')">' + (pr.done ? '再测一次（最佳 ' + pr.best + '/' + st.count + '）' : '开始小测') + '</button>';
+    if(pr.done){
+      html += '<div style="text-align:center;font-size:11.5px;color:var(--gold);margin-top:8px;">本站已点亮 · 印章已盖</div>';
+    }
   }
   html += '</div>';
   setHTML('station-body', html);
@@ -1393,13 +1532,18 @@ function vocabLearnHTML(){
     html += '<div class="fgrid">';
     words.forEach(function(w){
       html += '<div class="fcard" data-word="' + esc(w.en) + '"><div class="inner">';
-      html += '<div class="face front"><button class="spk spk-abs" data-say="' + esc(w.en) + '" aria-label="朗读">' + speakerIcon() + '</button><div class="en">' + esc(w.en) + '</div><div class="tip">点我翻面</div></div>';
-      html += '<div class="face back"><div class="cn">' + esc(w.cn) + '</div></div>';
+      html += '<div class="face front"><button class="spk spk-abs" data-say="' + esc(w.en) + '" aria-label="朗读">' + speakerIcon() + '</button><div class="en">' + esc(w.en) + '</div><div class="tip">翻面看释义 · 文中例句</div></div>';
+      html += '<div class="face back"><div class="cn">' + esc(w.cn) + '</div>';
+      if(w.ex){
+        html += '<div class="exbox"><div class="ex-head"><button class="spk spk-ex" data-say="' + esc(w.ex) + '" aria-label="朗读例句">' + speakerIcon() + '</button><span class="ex-lbl">文中用法</span></div>';
+        html += '<div class="ex-en">' + hlEx(w.ex, w.en) + '</div>';
+        html += '<div class="ex-cn">' + esc(w.exCn || '') + '</div></div>';
+      }
       html += '</div></div>';
     });
     html += '</div></div>';
   });
-  html += '<div class="hintbox"><span class="ttl">任务目标</span>先自己读英文猜意思，再翻面核对。能"见词能读、听音能拼"即达标。小测 5 题答对 4 题点亮本站（每题 +10 XP）。</div>';
+  html += '<div class="hintbox"><span class="ttl">任务目标</span>先自己读英文猜意思，再翻面核对释义和<b>文中原句</b>（例句都可点喇叭跟读）——在课文里见过它，才记得牢。能"见词能读、听音能拼"即达标。小测 5 题答对 4 题点亮本站（每题 +10 XP）。</div>';
   return html;
 }
 
@@ -1464,26 +1608,10 @@ function grammarLearnHTML(){
   return html;
 }
 
-function readingLearnHTML(){
-  var html = '';
-  READINGS.forEach(function(r, idx){
-    html += '<div class="card reading"><div class="rtitle"><b>' + r.title + '</b><span class="country">' + r.country + '</span></div>';
-    html += '<p>' + r.text + '</p>';
-    var en = READINGS_EN[idx] || '';
-    if(en){
-      html += '<div class="read-en"><div class="head"><button class="spk-mini" data-say="' + esc(en) + '" aria-label="朗读英文原文">' + speakerIcon() + '</button><span class="lbl">英文原文 · 点喇叭跟读</span></div><p>' + esc(en) + '</p></div>';
-    }
-    html += '<div class="hintbox vio"><span class="ttl">想一想</span>' + r.question + '</div>';
-    html += '</div>';
-  });
-  html += '<div class="hintbox ice"><span class="ttl">任务目标</span>先通读，再带着"想一想"回原文找答案。小测是判断题，答案都藏在课文里。</div>';
-  return html;
-}
-
 function finalLearnHTML(){
   var html = '<div class="card"><h3>综合考核说明</h3>';
   html += '<p>最后一战！共 <b>10 题</b>（5 判断 + 5 选择），覆盖全部知识点。答对 <b>8 题及以上</b>点亮最后一枚印章，获得<b>三角洲巅峰证书</b>！</p>';
-  html += '<div class="hintbox"><span class="ttl">战前建议</span>如果前四站和背诵特训还没全亮，建议先回去补课，再来冲击最终考核。</div>';
+  html += '<div class="hintbox"><span class="ttl">战前建议</span>如果前面的任务站和背诵特训还没全亮，建议先回去补课，再来冲击最终考核。</div>';
   html += '</div>';
   html += '<div class="stats">';
   var lit = 0;
@@ -1495,6 +1623,51 @@ function finalLearnHTML(){
   html += '<div class="stat"><div class="k">考核题数</div><div class="v">10 题</div></div>';
   html += '<div class="stat"><div class="k">通过要求</div><div class="v">≥ 8 题</div></div>';
   html += '</div>';
+  return html;
+}
+
+function reviewLearnHTML(){
+  var st = reviewStats();
+  var q = reviewQueue();
+  var html = '';
+
+  html += '<div class="stats">';
+  html += '<div class="stat"><div class="k" style="color:var(--bad);">待回测</div><div class="v" style="color:var(--bad);">' + st.due + '</div></div>';
+  html += '<div class="stat"><div class="k">复习中</div><div class="v">' + st.learning + '</div></div>';
+  html += '<div class="stat"><div class="k">已掌握</div><div class="v gold">' + st.mastered + '</div></div>';
+  html += '</div>';
+
+  html += '<div class="card"><h3>记忆曲线 · 怎么安排复习</h3>';
+  html += '<p style="color:var(--ink2);font-size:12.5px;line-height:1.7;">每次任务中<b style="color:var(--coral);">答错的题</b>会自动进入这里成为"待回测"知识点。<b style="color:var(--mint);">第一次答对</b>开始计时：1 天后 → 3 天后 → 7 天后 → 15 天后 → 30 天后依次回来复查。复查答对就升一档，答错立刻回到"待回测"再练。<b>已记住的知识点短期内不再出现</b>，到期才会回来检验是否真记住了。</p>';
+  html += '<div class="review-track">';
+  [['记住','1天','3天','7天','15天','30天','长期掌握']].forEach(function(step){
+    html += step.map(function(s, i){
+      return '<span class="rstep' + (i === 0 ? ' start' : '') + '">' + s + '</span>';
+    }).join('<i class="rarrow">›</i>');
+  });
+  html += '</div></div>';
+
+  if(q.length === 0){
+    html += '<div class="card"><h3>' + (st.total === 0 ? '还没有回测记录' : '当前没有待回测知识点') + '</h3>';
+    html += '<p style="color:var(--ink2);font-size:12.5px;">' + (st.total === 0
+      ? '先去词汇、短语、语法、阅读或综合考核里做几轮任务，答错的题会自动收编到这里，到期再来回测。'
+      : '所有测过的知识点要么已掌握、要么还没到复习时间。放心去学新内容，到期它们会自动出现在这里。') + '</p></div>';
+  } else {
+    html += '<div class="card"><h3>待回测清单<span class="tag">' + q.length + ' 个</span></h3>';
+    html += '<div class="rlist">';
+    q.forEach(function(kn){
+      var m = masteryGet(kn.k);
+      var catColor = kn.cat === '单词' ? 'var(--ice)' : kn.cat === '短语' ? 'var(--gold)' : kn.cat === '语法' ? 'var(--mint)' : 'var(--violet)';
+      html += '<div class="ritem">';
+      html += '<span class="rcat" style="color:' + catColor + ';">' + kn.cat + '</span>';
+      html += '<span class="rname">' + esc(kn.name) + '</span>';
+      html += '<span class="rstate' + (m.box === 0 ? ' bad' : ' due') + '">' + (m.box === 0 ? '待回测' : fmtDue(m.due)) + '</span>';
+      html += '</div>';
+    });
+    html += '</div></div>';
+  }
+
+  html += '<div class="hintbox"><span class="ttl">回测规则</span>每轮最多 15 题，覆盖当前所有"待回测 + 到期"知识点。答对 +5 XP，一轮答对 80% 以上 +30 XP 清场奖励。</div>';
   return html;
 }
 
@@ -2137,7 +2310,7 @@ function route(){
   }
   if(r.indexOf('/station/') === 0){
     var n = parseInt(r.split('/')[2], 10);
-    if(n >= 1 && n <= 6 && n !== 5){
+    if(n >= 1 && n <= 7 && n !== 4 && n !== 5){
       qs('[data-route="station"]').classList.add('on');
       renderStation(n);
       window.scrollTo(0, 0);
