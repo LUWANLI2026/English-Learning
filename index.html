@@ -172,30 +172,33 @@ body{
 .hintbox.red{border-left-color:var(--coral);background:rgba(224,107,92,0.08);}
 .hintbox.red .ttl{color:var(--coral);}
 /* ===== 翻卡（词汇） ===== */
-.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;}
-.fcard{perspective:600px;height:152px;cursor:pointer;}
-.fcard .inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s;}
-.fcard.flip .inner{transform:rotateY(180deg);}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;}
+.fcard{min-height:120px;cursor:pointer;position:relative;}
+.fcard .inner{position:relative;width:100%;}
 .fcard .face{
-  position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border:1px solid var(--line);padding:8px;text-align:center;
+  border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;
+  box-sizing:border-box;width:100%;
 }
-.fcard .front{background:var(--card2);position:relative;padding-top:16px;}
-.fcard .front .en{font-size:14px;font-weight:700;word-break:break-word;}
-.fcard .front .tip{font-size:10px;color:var(--ink2);margin-top:4px;}
-.fcard .back{background:linear-gradient(135deg,rgba(143,211,232,0.20),rgba(232,182,75,0.14));transform:rotateY(180deg);padding:9px 10px;justify-content:flex-start;align-items:stretch;text-align:left;overflow:hidden;}
-.fcard .back .cn{font-size:12.5px;line-height:1.35;word-break:break-word;color:var(--ink);font-weight:700;}
-.fcard .back .exbox{margin-top:4px;border-top:1px dashed rgba(232,182,75,0.35);padding-top:4px;}
-.fcard .back .ex-head{display:flex;align-items:center;gap:5px;margin-bottom:2px;}
-.fcard .back .ex-lbl{font-size:9px;letter-spacing:1px;border:1px solid rgba(232,182,75,0.45);color:var(--gold);border-radius:6px;padding:0 5px;line-height:14px;}
-.fcard .back .ex-en{font-size:10.5px;line-height:1.45;word-break:break-word;color:var(--ink);}
-.fcard .back .ex-cn{font-size:10px;line-height:1.4;color:var(--ink2);margin-top:2px;word-break:break-word;}
+.fcard .face.back{display:none;}
+.fcard.flip .face.front{display:none;}
+.fcard.flip .face.back{display:flex;}
+.fcard .front{background:var(--card2);position:relative;min-height:120px;padding:26px 8px 10px;}
+.fcard .front .en{font-size:18px;font-weight:700;word-break:break-word;}
+.fcard .front .tip{font-size:10px;color:var(--ink2);margin-top:10px;}
+.fcard .back{background:linear-gradient(135deg,rgba(143,211,232,0.20),rgba(232,182,75,0.14));padding:10px;justify-content:flex-start;align-items:stretch;text-align:left;}
+.fcard .back .cn{font-size:14px;line-height:1.35;word-break:break-word;color:var(--ink);font-weight:700;}
+.fcard .back .exbox{margin-top:6px;border-top:1px dashed rgba(232,182,75,0.35);padding-top:5px;}
+.fcard .back .ex-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;}
+.fcard .back .ex-lbl{font-size:9.5px;letter-spacing:1px;border:1px solid rgba(232,182,75,0.45);color:var(--gold);border-radius:6px;padding:1px 6px;line-height:14px;}
+.fcard .back .ex-en{font-size:11px;line-height:1.5;word-break:break-word;color:var(--ink);}
+.fcard .back .ex-cn{font-size:10.5px;line-height:1.45;color:var(--ink2);margin-top:2px;word-break:break-word;}
 .fcard .back .hl{color:var(--gold);font-weight:700;}
-.fcard .back .spk-ex{width:20px;height:20px;min-width:20px;}
-.fcard .back .spk-ex svg{width:11px;height:11px;}
+.fcard .back .backtip{font-size:9.5px;color:var(--ink2);margin-top:7px;text-align:center;}
+.fcard .spk-ex{width:20px;height:20px;min-width:20px;}
+.fcard .spk-ex svg{width:11px;height:11px;}
 /* ===== 短语行 ===== */
-.plist{display:flex;flex-direction:column;gap:8px;}
+.plist{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:8px;}
 .prow{
   background:var(--card2);border:1px solid var(--line);border-radius:12px;
   padding:9px 10px;cursor:pointer;transition:border-color .2s;
@@ -204,7 +207,6 @@ body{
 .prow .pwrap{flex:1 1 auto;min-width:0;}
 .prow .en{font-size:13px;font-weight:700;word-break:break-word;}
 .prow .cn{font-size:12px;color:var(--gold);margin-top:5px;display:none;line-height:1.5;}
-.prow.open{border-color:rgba(232,182,75,0.5);}
 .prow.open .cn{display:block;}
 .prow .hint{font-size:10px;color:var(--ink2);margin-top:3px;}
 /* ===== 语法 ===== */
@@ -398,21 +400,23 @@ table.prep .key{color:var(--gold);font-weight:700;font-size:14px;}
 /* ===== 移动端 ===== */
 @media (max-width:480px){
   .hero h2{font-size:23px;}
-  .fcard{height:88px;}
+  .fgrid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
+  .fcard .front .en{font-size:16px;}
   .topbar .sub{display:none;}
 }
 /* ===== 触屏 / 平板放大 ===== */
 body.touch .btn{min-height:58px;font-size:17px;border-radius:16px;}
 body.touch .opt{min-height:56px;font-size:15px;padding:12px 16px;border-radius:14px;}
-body.touch .fcard{height:172px;}
-body.touch .fcard .front .en{font-size:16px;}
+body.touch .fgrid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));}
+body.touch .fcard .front .en{font-size:19px;}
 body.touch .fcard .front .tip{font-size:11px;}
-body.touch .fcard .back .cn{font-size:14.5px;}
-body.touch .fcard .back .ex-en{font-size:12px;}
-body.touch .fcard .back .ex-cn{font-size:11px;}
+body.touch .fcard .back .cn{font-size:15px;}
+body.touch .fcard .back .ex-en{font-size:12.5px;}
+body.touch .fcard .back .ex-cn{font-size:11.5px;}
 body.touch .fcard .back .ex-lbl{font-size:10px;line-height:16px;}
-body.touch .fcard .back .spk-ex{width:26px;height:26px;min-width:26px;}
-body.touch .fcard .back .spk-ex svg{width:14px;height:14px;}
+body.touch .fcard .back .backtip{font-size:10px;}
+body.touch .fcard .spk-ex{width:26px;height:26px;min-width:26px;}
+body.touch .fcard .spk-ex svg{width:14px;height:14px;}
 body.touch .prow{padding:13px 14px;}
 body.touch .prow .en{font-size:14.5px;}
 body.touch .prow .cn{font-size:13.5px;}
@@ -661,7 +665,18 @@ var PAST_POOL = [
   {q:'win 的过去式是', options:['won','winned','win','wins'], a:0},
   {q:'sit 的过去式是', options:['sat','sitted','set','sit'], a:0},
   {q:'give 的过去式是', options:['gave','gived','given','gives'], a:0},
-  {q:'send 的过去式是', options:['sent','sended','send','sends'], a:0}
+  {q:'send 的过去式是', options:['sent','sended','send','sends'], a:0},
+  {q:'am / is 的过去式是', options:['was','were','is','am'], a:0},
+  {q:'are 的过去式是', options:['were','was','are','wered'], a:0},
+  {q:'cut 的过去式是', options:['cut','cuted','cuts','cutted'], a:0},
+  {q:'hold 的过去式是', options:['held','holded','holds','helded'], a:0},
+  {q:'celebrate 的过去式是', options:['celebrated','celebrate','celebrates','celebrateded'], a:0},
+  {q:'decorate 的过去式是', options:['decorated','decorate','decorates','decorateded'], a:0},
+  {q:'paint 的过去式是', options:['painted','paint','paints','painteded'], a:0},
+  {q:'cook 的过去式是', options:['cooked','cook','cooks','cookeded'], a:0},
+  {q:'watch 的过去式是', options:['watched','watch','watches','watcheded'], a:0},
+  {q:'text 的过去式是', options:['texted','text','texts','textedt'], a:0},
+  {q:'stay 的过去式是', options:['stayed','stay','stays','stayeded'], a:0}
 ];
 
 var PREP_POOL = [
@@ -679,7 +694,10 @@ var ADJ_POOL = [
   {q:'traditional ___　传统舞蹈', options:['dancing','sky','river','night'], a:0},
   {q:'lucky ___　幸运色', options:['colour','fireworks','ceremony','population'], a:0},
   {q:'long ___　长寿面（长面条）', options:['noodles','stick','brick','race'], a:0},
-  {q:'brilliant ___　灿烂的烟花', options:['fireworks','costume','culture','gift'], a:0}
+  {q:'brilliant ___　灿烂的烟花', options:['fireworks','costume','culture','gift'], a:0},
+  {q:'frozen ___　冰冻的湖面', options:['lake','parade','midnight','gift'], a:0},
+  {q:'pure ___　纯净的雪', options:['snow','fireworks','noodles','dancing'], a:0},
+  {q:'annual ___　一年一度的比赛', options:['competition','river','brick','costume'], a:0}
 ];
 
 /* 背诵文章（逐句） */
@@ -1090,11 +1108,15 @@ function tfPool(pool, n, key){
   });
 }
 function buildFinalQ(){
-  var tf = tfPool(TF_FINAL, 5, 'r:tf2');
-  var mc = shuffle(MC_FINAL).slice(0,5).map(function(x){
+  /* 综合考核：词汇 3 + 短语 2 + 语法 3 + 课文 2，覆盖全部知识点维度 */
+  var vq = buildVocabQ(3);
+  var pq = buildPhraseQ(2);
+  var gq = buildGrammarQ().slice(0,3);
+  var tf = tfPool(TF_FINAL, 1, 'r:tf2');
+  var mc = shuffle(MC_FINAL).slice(0,1).map(function(x){
     return {type:'mc', q:x.q, options:x.options, a:x.a, note:'综合题', k:'r:mc:' + x.q};
   });
-  return shuffle(tf.concat(mc));
+  return shuffle(vq.concat(pq, gq, tf, mc));
 }
 
 /* ================= 记忆巩固 · 间隔重复引擎 ================= */
@@ -1532,29 +1554,30 @@ function vocabLearnHTML(){
     html += '<div class="fgrid">';
     words.forEach(function(w){
       html += '<div class="fcard" data-word="' + esc(w.en) + '"><div class="inner">';
-      html += '<div class="face front"><button class="spk spk-abs" data-say="' + esc(w.en) + '" aria-label="朗读">' + speakerIcon() + '</button><div class="en">' + esc(w.en) + '</div><div class="tip">翻面看释义 · 文中例句</div></div>';
+      html += '<div class="face front"><div class="en">' + esc(w.en) + '</div><button class="spk spk-abs" data-say="' + esc(w.en) + '" aria-label="朗读">' + speakerIcon() + '</button><div class="tip">点击翻面 · 释义与文中例句</div></div>';
       html += '<div class="face back"><div class="cn">' + esc(w.cn) + '</div>';
       if(w.ex){
-        html += '<div class="exbox"><div class="ex-head"><button class="spk spk-ex" data-say="' + esc(w.ex) + '" aria-label="朗读例句">' + speakerIcon() + '</button><span class="ex-lbl">文中用法</span></div>';
+        html += '<div class="exbox"><div class="ex-head"><span class="ex-lbl">文中用法</span><button class="spk spk-ex" data-say="' + esc(w.ex) + '" aria-label="朗读例句">' + speakerIcon() + '</button></div>';
         html += '<div class="ex-en">' + hlEx(w.ex, w.en) + '</div>';
         html += '<div class="ex-cn">' + esc(w.exCn || '') + '</div></div>';
       }
-      html += '</div></div>';
+      html += '<div class="backtip">再点一下翻回正面</div>';
+      html += '</div></div></div>';
     });
     html += '</div></div>';
   });
-  html += '<div class="hintbox"><span class="ttl">任务目标</span>先自己读英文猜意思，再翻面核对释义和<b>文中原句</b>（例句都可点喇叭跟读）——在课文里见过它，才记得牢。能"见词能读、听音能拼"即达标。小测 5 题答对 4 题点亮本站（每题 +10 XP）。</div>';
+  html += '<div class="hintbox"><span class="ttl">任务目标</span>点击卡片翻面：先自己读英文猜意思，再翻面核对释义和<b>文中原句</b>（例句可点喇叭跟读）——在课文里见过它，才记得牢。小测 5 题答对 4 题点亮本站（每题 +10 XP）。</div>';
   return html;
 }
 
 function phraseLearnHTML(){
-  var html = '<div class="card"><h3>课本必背短语<span class="tag">20 条</span></h3><p style="margin-bottom:10px;">点一下行显示中文，先盖住自测再核对。</p>';
+  var html = '<div class="card"><h3>课本必背短语<span class="tag">20 条</span></h3><p style="margin-bottom:10px;">先读英文猜意思，点一下显示中文核对，再点收起。</p>';
   html += '<div class="plist">';
   PHRASES.forEach(function(p){
     html += '<div class="prow" data-phrase="' + esc(p.en) + '">';
     html += '<button class="spk" data-say="' + esc(p.en) + '" aria-label="朗读">' + speakerIcon() + '</button>';
     html += '<div class="pwrap"><div class="en">' + esc(p.en) + '</div>';
-    html += '<div class="hint">点文字看中文</div>';
+    html += '<div class="hint">点一下看中文</div>';
     html += '<div class="cn">' + esc(p.cn) + '</div></div>';
     html += '</div>';
   });
@@ -1571,10 +1594,10 @@ function grammarLearnHTML(){
     html += '<span style="display:inline-flex;align-items:center;gap:4px;background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:5px 6px 5px 9px;font-size:12px;color:var(--ink2);">' + r[0] + ' → <b style="color:var(--mint);">' + r[1] + '</b><button class="spk-mini" data-say="' + esc(r[0] + ', ' + r[1]) + '" aria-label="朗读">' + speakerIcon() + '</button></span>';
   });
   html += '</div>';
-  html += '<p><b>不规则动词</b>要靠记，点一下看过去式和意思：</p>';
+  html += '<p><b>不规则动词</b>要靠记，过去式和意思已显示，点一下可收起自测：</p>';
   html += '<div class="verbgrid">';
   IRREGULAR.forEach(function(v){
-    html += '<div class="vchip" data-verb="' + esc(v[0]) + '">';
+    html += '<div class="vchip open" data-verb="' + esc(v[0]) + '">';
     html += '<button class="spk-mini" style="position:absolute;top:2px;right:2px;" data-say="' + esc(v[0].replace(/\//g,' and ') + ', ' + v[1]) + '" aria-label="朗读">' + speakerIcon() + '</button>';
     html += '<div class="base">' + esc(v[0]) + '</div>';
     html += '<div class="past">' + esc(v[1]) + '</div>';
